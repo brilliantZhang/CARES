@@ -5,6 +5,17 @@ __pycache__/
 
 # C extensions
 *.so
+/data_format1
+#data
+
+*.dat
+*.csv
+*.pkl
+*.pt
+*.ipynb
+*.txt
+*.log: 忽略所有 .log 文件
+config.php: 忽略当前路径的 config.php 文件
 
 # Distribution / packaging
 .Python
