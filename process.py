@@ -13,7 +13,6 @@ parser.add_argument('--dataset', default='yoochoose', help='dataset name: digine
 opt = parser.parse_args()
 print(opt)
 
-dataset = 'sample_train-item-views.csv'
 if opt.dataset == 'diginetica':
     dataset = 'train-item-views.csv'
     df=pd.read_csv('product-categories.csv',delimiter=';')
