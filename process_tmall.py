@@ -215,15 +215,11 @@ def obtian_tes():
 tra_ids, tra_dates, tra_seqs,tra_cates = obtian_tra()
 tes_ids, tes_dates, tes_seqs,tes_cates = obtian_tes()
 
-# df=pd.DataFrame(tra_dates+tes_dates,columns=['date'])
-# df['timeid']=df.date.rank(method='dense',ascending=True).astype(int)
-# time_map=dict(zip(df['date'].unique(),df['timeid'].unique()))
-
 def process_seqs(iseqs, idates,icates,save_item):
     out_seqs = []
     out_cates=[]
     labs = []
-    clabs=[]
+
     ids = []
     all_items = []
     all_cates = []
@@ -233,9 +229,7 @@ def process_seqs(iseqs, idates,icates,save_item):
         for i in range(len(seq)-1,0,-1):
             tar = seq[-i]
             labs += [tar]
-            
             ctar = cate[-i]
-            clabs += [ctar] 
             
             out_seqs += [seq[:-i]]
             out_cates += [cate[:-i]]
@@ -250,15 +244,15 @@ def process_seqs(iseqs, idates,icates,save_item):
 
         print(len(item_dict.keys()))
 
-    return out_seqs,  labs, ids,out_cates,clabs
+    return out_seqs,  labs, ids,out_cates
 
 print(tra_seqs[:10])
 
-tr_seqs, tr_labs, tr_ids,tr_cates,tr_clabs = process_seqs(tra_seqs, tra_dates,tra_cates,True)
-te_seqs, te_labs, te_ids,te_cates,te_clabs = process_seqs(tes_seqs, tes_dates,tes_cates,False)
+tr_seqs, tr_labs, tr_ids,tr_cates = process_seqs(tra_seqs, tra_dates,tra_cates,True)
+te_seqs, te_labs, te_ids,te_cates = process_seqs(tes_seqs, tes_dates,tes_cates,False)
 
-tra = (tr_seqs, tr_labs, tr_cates,tr_clabs)
-tes = (te_seqs, te_labs, te_cates,te_clabs)
+tra = (tr_seqs, tr_labs, tr_cates)
+tes = (te_seqs, te_labs, te_cates)
 print('train_test')
 print(len(tr_seqs))
 print(len(te_seqs))

@@ -209,7 +209,7 @@ def process_seqs(iseqs, idates,icates,save_item):
     ids = []
     all_items = []
     all_cates = []
-    clabs=[]
+    
     for id, seq, date,cate in zip(range(len(iseqs)), iseqs, idates,icates):
         all_items += seq
         all_cates += cate
@@ -218,8 +218,7 @@ def process_seqs(iseqs, idates,icates,save_item):
             labs += [tar]
             
             ctar = cate[-i]
-            clabs += [ctar] 
-            
+        
             out_seqs += [seq[:-i]]
             out_cates += [cate[:-i]]
             out_dates += [time_map[date]]
@@ -246,12 +245,12 @@ def process_seqs(iseqs, idates,icates,save_item):
 
         print(len(item_dict.keys()))
 
-    return out_seqs, out_dates, labs, ids,out_cates,clabs
+    return out_seqs, out_dates, labs, ids,out_cates
 
 print(tra_seqs[:10])
 
-tr_seqs, tr_dates, tr_labs, tr_ids,tr_cates,tr_clabs = process_seqs(tra_seqs, tra_dates,tra_cates,True)
-te_seqs, te_dates, te_labs, te_ids,te_cates,te_clabs = process_seqs(tes_seqs, tes_dates,tes_cates,False)
+tr_seqs, tr_dates, tr_labs, tr_ids,tr_cates = process_seqs(tra_seqs, tra_dates,tra_cates,True)
+te_seqs, te_dates, te_labs, te_ids,te_cates = process_seqs(tes_seqs, tes_dates,tes_cates,False)
 
 print(len(tr_seqs))
 print(len(te_seqs))
@@ -259,8 +258,8 @@ print(tr_seqs[:3], tr_dates[:3], tr_labs[:3])
 print(te_seqs[:3], te_dates[:3], te_labs[:3])
 all = 0
 
-tra = (tr_seqs, tr_labs, tr_cates,tr_clabs)
-tes = (te_seqs, te_labs,te_cates,te_clabs)
+tra = (tr_seqs, tr_labs, tr_cates)
+tes = (te_seqs, te_labs,te_cates)
 for seq in tra_seqs:
     all += len(seq)
 for seq in tes_seqs:
