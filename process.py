@@ -14,11 +14,11 @@ opt = parser.parse_args()
 print(opt)
 
 if opt.dataset == 'diginetica':
-    dataset = 'train-item-views.csv'
-    df=pd.read_csv('product-categories.csv',delimiter=';')
+    dataset = 'diginetica/raw/train-item-views.csv'
+    df=pd.read_csv('diginetica/raw/product-categories.csv',delimiter=';')
     i2c=dict(zip(df.itemId.to_list(),df.categoryId.to_list()))
 elif opt.dataset =='yoochoose':
-    dataset = 'yoochoose-clicks.dat'
+    dataset = 'yoochoose1_64/raw/yoochoose-clicks.dat'
     df = pd.read_csv(dataset,names=['sessionId','timestamp','item_id','category'])
     le = preprocessing.LabelEncoder()
     df['category']=df['category'].replace(0,-1)

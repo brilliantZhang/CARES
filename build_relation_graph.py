@@ -16,18 +16,16 @@ seq,cate = pickle.load(open(dataset + '/all_train_seq.txt', 'rb'))
 
 if dataset == 'diginetica':
     num = 43098
+    opt.rel_num=5
     item_dict = pickle.load(open(f'{dataset}_item_dict.pkl', 'rb'))
-elif opt.dataset == 'yoochoose1_4':
-    num = 37484
-    item_dict = pickle.load(open(f'yoochoose_item_dict.pkl', 'rb'))
 elif opt.dataset == 'yoochoose1_64':
     num = 37484
+    opt.rel_num=30
     item_dict = pickle.load(open(f'yoochoose_item_dict.pkl', 'rb'))
 elif dataset == "tmall":
     num = 40728
+    opt.rel_num=5
     item_dict = pickle.load(open(f'Tmall_item_dict.pkl', 'rb'))
-elif dataset == "Nowplaying":
-    num = 60417
 else:
     num = 3
 

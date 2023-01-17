@@ -1,5 +1,5 @@
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] ='1'
+os.environ['CUDA_VISIBLE_DEVICES'] ='0'
 import time
 import torch
 import pickle
@@ -31,6 +31,7 @@ parser.add_argument('--activate', type=str, default='relu')
 parser.add_argument('--validation', action='store_true', help='validation')
 parser.add_argument('--valid_portion', type=float, default=0.1, help='split the portion of training set as validation set')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+parser.add_argument('--device', type=str, default=device)
 opt = parser.parse_args()
 
 

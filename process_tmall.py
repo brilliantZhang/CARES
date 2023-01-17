@@ -8,15 +8,15 @@ import os
 import pandas as pd
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataset', default='Tmall', help='dataset name: diginetica/yoochoose/sample')
+parser.add_argument('--dataset', default='Tmall', help='dataset name: tmall')
 opt = parser.parse_args()
 print(opt)
-df = pd.read_csv('data_format1/user_log_format1.csv')
+df = pd.read_csv('tmall/raw/user_log_format1.csv')
 df=df[['item_id','cat_id']].drop_duplicates()
 i2c=dict(zip(df.item_id.values,df.cat_id.values))
 
 print(df.cat_id.describe())
-with open('tmall_data.csv', 'w') as tmall_data:
+with open('tmall/raw/tmall_data.csv', 'w') as tmall_data:
     with open('tmall/raw/dataset15.csv', 'r') as tmall_file:
         header = tmall_file.readline()
         tmall_data.write(header)
@@ -27,7 +27,7 @@ with open('tmall_data.csv', 'w') as tmall_data:
             tmall_data.write(line)
 
 print("-- Starting @ %ss" % datetime.datetime.now())
-with open('tmall_data.csv', "r") as f:
+with open('tmall/raw/tmall_data.csv', "r") as f:
     reader = csv.DictReader(f, delimiter='\t')
     sess_clicks = {}
     sess_date = {}

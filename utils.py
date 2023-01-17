@@ -68,7 +68,10 @@ class Data(Dataset):
         
         max_n_node=self.len_max
         node = np.unique(inputs) 
-        d=dict(zip(inputs.tolist(),cates.tolist()))
+        try:
+            d=dict(zip(inputs.tolist(),cates.tolist()))
+        except:
+            d=dict(zip(inputs.tolist(),cates))
         
         items = node.tolist() + (max_n_node - len(node)) * [0]
         cates = [d[x] for x in node.tolist()] + (max_n_node - len(node)) * [0]
