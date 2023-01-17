@@ -1,4 +1,4 @@
-# GCE-GNN
+# CARES
 
 ## Code
 
