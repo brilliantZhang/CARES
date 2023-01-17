@@ -10,7 +10,7 @@ from model import *
 from utils import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataset', default='tmall', help='dataset name: diginetica/yoochoose1_4/yoochoose1_64/sample')
+parser.add_argument('--dataset', default='tmall', help='dataset name: diginetica/yoochoose1_64/tmall')
 parser.add_argument('--batchSize', type=int, default=100, help='input batch size')
 parser.add_argument('--hiddenSize', type=int, default=256, help='hidden state size')
 parser.add_argument('--lr', type=float, default=0.001, help='learning rate')  # [0.001, 0.0005, 0.00001]
@@ -31,8 +31,6 @@ parser.add_argument('--activate', type=str, default='relu')
 parser.add_argument('--validation', action='store_true', help='validation')
 parser.add_argument('--valid_portion', type=float, default=0.1, help='split the portion of training set as validation set')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-parser.add_argument('--device', type=str, default=device)
-parser.add_argument('--gpu', type=str, default="0")
 opt = parser.parse_args()
 
 

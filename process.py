@@ -222,25 +222,13 @@ def process_seqs(iseqs, idates,icates,save_item):
             out_cates += [cate[:-i]]
             out_dates += [time_map[date]]
             ids += [id]
-        # for i in range(1, len(seq)):
-        #     tar = seq[-i]
-        #     labs += [tar]
-        #     out_seqs += [seq[:-i]]
-        #     out_cates += [cate[:-i]]
-        #     out_dates += [date]
-        #     ids += [id]
+        
     if save_item:
         all_items = pd.DataFrame(all_items,columns=['item'])
         all_items = all_items.item.value_counts().reset_index()
         all_items.columns=['item','item_counts']
         item_dict = dict(zip(all_items.item.values,all_items.item_counts.values))
         pickle.dump(item_dict, open(f'{opt.dataset}_item_dict.pkl', 'wb'))
-
-        # all_cates = pd.DataFrame(all_cates,columns=['item'])
-        # all_cates = all_cates.item.value_counts().reset_index()
-        # all_cates.columns=['item','item_counts']
-        # cate_dict = dict(zip(all_cates.item.values,all_cates.item_counts.values))
-        # pickle.dump(cate_dict, open(f'{opt.dataset}_cate_dict.pkl', 'wb'))
 
         print(len(item_dict.keys()))
 

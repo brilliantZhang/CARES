@@ -67,16 +67,11 @@ class Data(Dataset):
                                 self.cates[i],self.sesstime[i]
         
         max_n_node=self.len_max
-        
         node = np.unique(inputs) 
-        try:
-            d=dict(zip(inputs.tolist(),cates.tolist()))
-        except:
-            d=dict(zip(inputs.tolist(),cates))
+        d=dict(zip(inputs.tolist(),cates.tolist()))
         
         items = node.tolist() + (max_n_node - len(node)) * [0]
         cates = [d[x] for x in node.tolist()] + (max_n_node - len(node)) * [0]
-        
         alias_inputs = [np.where(node == i)[0][0] for i in inputs]
             
         alias_inputs = torch.tensor(alias_inputs).long()

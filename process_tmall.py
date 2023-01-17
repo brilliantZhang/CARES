@@ -108,50 +108,6 @@ print("-- Splitting train set and test set @ %ss" % datetime.datetime.now())
 # Choosing item count >=5 gives approximately the same number of items as reported in paper
 item_dict = {}
 # Convert training sessions to sequences and renumber items to start from 1
-# def obtian_tra():
-#     train_ids = []
-#     train_seqs = []
-#     train_dates = []
-#     item_ctr = 1
-#     for s, date in tra_sess:
-#         seq = sess_clicks[s]
-#         outseq = []
-#         for i in seq:
-#             if i in item_dict:
-#                 outseq += [item_dict[i]]
-#             else:
-#                 outseq += [item_ctr]
-#                 item_dict[i] = item_ctr
-#                 item_ctr += 1
-#         if len(outseq) < 2:  # Doesn't occur
-#             continue
-#         train_ids += [s]
-#         train_dates += [date]
-#         train_seqs += [outseq]
-#     print('item_ctr')
-#     print(item_ctr)     # 43098, 37484
-#     return train_ids, train_dates, train_seqs
-
-# # Convert test sessions to sequences, ignoring items that do not appear in training set
-# def obtian_tes():
-#     test_ids = []
-#     test_seqs = []
-#     test_dates = []
-#     for s, date in tes_sess:
-#         seq = sess_clicks[s]
-#         outseq = []
-#         for i in seq:
-#             if i in item_dict:
-#                 outseq += [item_dict[i]]
-#         if len(outseq) < 2:
-#             continue
-#         test_ids += [s]
-#         test_dates += [date]
-#         test_seqs += [outseq]
-#     return test_ids, test_dates, test_seqs
-
-# tra_ids, tra_dates, tra_seqs = obtian_tra()
-# tes_ids, tes_dates, tes_seqs = obtian_tes()
 def obtian_tra():
     train_ids = []
     train_seqs = []
